@@ -21,24 +21,27 @@ export default function Home() {
 
   return (
     <main
-      className="min-h-screen bg-cover bg-center bg-no-repeat"
+      className="min-h-screen bg-cover bg-center bg-no-repeat relative"
       style={{
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://i.ibb.co/Q7zx0tnn/26523.jpg")`,
       }}
     >
-      {currentScreen === "login" && (
-        <LoginForm onLogin={handleLogin} onRegisterClick={() => setCurrentScreen("register")} />
-      )}
-      {currentScreen === "register" && (
-        <RegisterForm
-          onRegisterSuccess={(name) => {
-            setCurrentScreen("login")
-            return name
-          }}
-          onLoginClick={() => setCurrentScreen("login")}
-        />
-      )}
-      {currentScreen === "logbook" && currentUser && <LogbookDashboard user={currentUser} onLogout={handleLogout} />}
+      <div className="absolute inset-0 bg-black/30" />
+      <div className="relative z-10">
+        {currentScreen === "login" && (
+          <LoginForm onLogin={handleLogin} onRegisterClick={() => setCurrentScreen("register")} />
+        )}
+        {currentScreen === "register" && (
+          <RegisterForm
+            onRegisterSuccess={(name) => {
+              setCurrentScreen("login")
+              return name
+            }}
+            onLoginClick={() => setCurrentScreen("login")}
+          />
+        )}
+        {currentScreen === "logbook" && currentUser && <LogbookDashboard user={currentUser} onLogout={handleLogout} />}
+      </div>
     </main>
   )
 }

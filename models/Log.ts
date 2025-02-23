@@ -23,6 +23,9 @@ const logSchema = new mongoose.Schema(
     remarks: {
       type: String,
     },
+    photoUrl: {
+      type: String,
+    },
   },
   {
     timestamps: true,

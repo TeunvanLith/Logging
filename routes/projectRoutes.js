@@ -15,6 +15,9 @@ router.get("/:userId", async (req, res) => {
 
 // Add a new project
 router.post("/", async (req, res) => {
+  
+  console.log(req.body);
+  console.log("test3put")
   try {
     const { name, userId } = req.body
     const project = new Project({ name, userId })
